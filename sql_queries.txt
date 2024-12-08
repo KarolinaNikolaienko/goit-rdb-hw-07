@@ -1,0 +1,21 @@
+--P1
+USE mydb;
+
+SELECT o.id, o.date, YEAR(o.date) AS year, MONTH(o.date) AS month, DAY(o.date) AS day
+FROM orders_ AS o;
+
+--P2
+SELECT o.id, o.date, date_add(o.date, INTERVAL 1 DAY ) AS new_date
+FROM orders_ AS o;
+
+--P3
+SELECT o.id, o.date, unix_timestamp(o.date) AS seconds
+FROM orders_ AS o;
+
+--P4
+SELECT COUNT(o.date)
+FROM orders_ AS o WHERE o.date BETWEEN '1996-07-10 00:00:00' AND '1996-10-08 00:00:00';
+
+--P5
+SELECT o.id, o.date, json_object('id', o.id, 'date', o.date) AS json
+FROM orders_ AS o;
